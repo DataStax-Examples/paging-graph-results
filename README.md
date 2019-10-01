@@ -1,34 +1,47 @@
-# datastax-examples-template
-This a sample template repo for contributions to the DataStax Examples platform.  This provides the minimum set of items needed to create a new example for submission to the DataStax Examples platform.
+# Paging Graph Results
+This example shows you how to handle use paging with graph result sets.  It contains three different methods for processing results:
+* Unpaged results - This does not use paging at all and is included for comparisons sake
+* Synchronously Paged Results - This using the continuous paging functionality of DataStax Graph along with synchronous processing of results
+* Asynchronously Paged Results -  This using the continuous paging functionality of DataStax Graph along with asynchronous processing of results
 
-## Prerequisites
-* Git must be installed
-	* If it is not installed then follow the guide found [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-	
+Continuous paging is method within the DataStax Java Driver which allows for streaming of bulk records by having the server continuously prepare pages of results of the specified size.  With this method the driver returns a "page" of results to allow for processing of those results while additional "pages" are being retrieved.
+
+## Objectives
+* To understand the three different methods of processing graph results in Java
+
+## How it Works
+
+This code contains methods for processing unpaged results (`unpagedResults`), synchronously paged results (`continuousPagingSynchronous`), and asynchronously paged results (`continuousPagingAsynchronous`).
+
+In both the methods where paging is enabled by setting the Paging Options on the statement to be executed as seen below:
+
+```ContinuousPagingOptions options = ContinuousPagingOptions.builder().withPageSize(pageSize, ContinuousPagingOptions.PageUnit.ROWS).build();statement.setPagingEnabled(true).setPagingOptions(options);```
+
+Using the `ContinuousPagingOptions.builder()` you can set the page size that you would like to return.  With graph results the only valid `PageUnit` is `ROWS`.
+
+## Before you Begin
+
+### Prerequisites
+* Java 8
+* A DSE Cluster running a DS Core Graph 	
+* The DataStax Enterprise Java Driver for the 1.8.2.20190711-LABS Experimental 6.8 DataStax Graph Release
+* Maven
+
+## Setup and Running
+
+### Building
+
+In order to build this we need to run a Maven build using:
+
+```mvn clean package```
+
+This will build and package a fat jar.  
+
+### Running
+Once completed you can run this program from the command line using where you must include the Cluster contact point and the graph name you want run against.  This graph must exist
+```
+java -cp ./target/paging-graph-results-0.1-jar-with-dependencies.jar com.datastax.graphpractice.example.App <insert cluster contact point> <insert graph name>
+```
 
 
-## Cloning this Repo to get started
-In a Terminal window.
-
-1) Create a bare clone of the repository.
-
-	git clone --bare https://github.com/bechbd/datastax-examples-template.git`
-
-2) Mirror-push to the new repository.
-
-	cd datastax-examples-template.git
-	git push --mirror https://github.com/bechbd/<new repo name>.git`
-
-3) Remove the temporary local repository you created in step 1.
-
-	cd ..
-	rm -rf datastax-examples-template.git
-
-
-
-4) Clone the newly created repository from step 3.
-
-	git clone https://github.com/bechbd/<new repo name>.git
-	
-You are now ready to work away in this duplicated repo
  
