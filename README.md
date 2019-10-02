@@ -43,5 +43,7 @@ Once completed you can run this program from the command line using where you mu
 java -cp ./target/paging-graph-results-0.1-jar-with-dependencies.jar com.datastax.graphpractice.example.App <insert cluster contact point> <insert graph name>
 ```
 
+## Attribution
+Created and Maintained by [bechbd](https://github.com/bechbd)
 
  
