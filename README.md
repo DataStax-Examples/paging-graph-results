@@ -29,6 +29,9 @@ Using the `ContinuousPagingOptions.builder()` you can set the page size that you
 
 ## Setup and Running
 
+### Files
+* App.js - This file is where the code for the three different result methods exists
+
 ### Building
 
 In order to build this we need to run a Maven build using:
