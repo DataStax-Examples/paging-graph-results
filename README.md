@@ -1,5 +1,5 @@
 # Paging Graph Results
-This example shows you how to handle page graph result sets on a DS Core Graph traversal.  It contains three different methods for processing results:
+This example shows you how to handle page graph result sets on a [DataStax Graph](https://www.datastax.com/products/datastax-graph) traversal.  It contains three different methods for processing results:
 * Unpaged results - This does not use paging at all and is included for comparisons sake
 * Synchronously Paged Results - This using the continuous paging functionality of DataStax Graph along with synchronous processing of results
 * Asynchronously Paged Results -  This using the continuous paging functionality of DataStax Graph along with asynchronous processing of results
@@ -9,7 +9,7 @@ having the server continuously prepare pages of results of the specified size.
 With this method the driver returns a "page" of results to allow for processing of those results while 
 additional "pages" are being retrieved.
 
-Contributors: [bechbd](https://github.com/bechbd)
+Contributors: [Dave Bechberger](https://github.com/bechbd)
 
 ## Objectives
 * To understand the three different methods of processing graph results in Java
@@ -33,7 +33,7 @@ Using the `ContinuousPagingOptions.builder()` you can set the page size that you
 
 ### Prerequisites
 * Java 8
-* A DSE Cluster running a DS Core Graph 	
+* A DSE Cluster running a DS Core Graph ( available at [DataStax Labs](https://downloads.datastax.com/#labs) )
 * The DataStax Enterprise Java Driver for the 1.8.2.20190711-LABS Experimental 6.8 DataStax Graph Release
 * Maven
 
@@ -41,7 +41,7 @@ Using the `ContinuousPagingOptions.builder()` you can set the page size that you
 
 In order to build this we need to run a Maven build using:
 
-```mvn clean package```
+`mvn clean package`
 
 This will build and package a fat jar.  
 
